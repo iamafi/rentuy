@@ -10,4 +10,4 @@ class ProfileView(RetrieveAPIView, LoginRequiredMixin):
     serializer_class = ProfileSerializer
 
     def get_object(self):
-        return get_object_or_404(User, id=self.kwargs['pk'])
+        return get_object_or_404(User, id=self.request.user.pk)
