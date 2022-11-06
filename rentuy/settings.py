@@ -71,6 +71,10 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=24),
 }
 
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_CREDENTIALS = True
+
 ROOT_URLCONF = 'rentuy.urls'
 
 TEMPLATES = [
