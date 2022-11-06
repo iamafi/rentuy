@@ -6,7 +6,7 @@ from property.models import Property, Review
 from property.serializers import PropertyListSerializer, PropertyDetailSerializer, ReviewSerializer, RequestSerializer
 
 
-class PropertyListView(ListAPIView, LoginRequiredMixin):
+class PropertyListView(ListAPIView):
     serializer_class = PropertyListSerializer
 
     def get_queryset(self):
@@ -26,7 +26,7 @@ class PropertyListView(ListAPIView, LoginRequiredMixin):
         return qs
 
 
-class PropertyDetailView(RetrieveAPIView, LoginRequiredMixin):
+class PropertyDetailView(RetrieveAPIView):
     serializer_class = PropertyDetailSerializer
     queryset = Property.objects.filter(renter=None).order_by('-created')
 
@@ -34,12 +34,12 @@ class PropertyDetailView(RetrieveAPIView, LoginRequiredMixin):
         return get_object_or_404(Property, id=self.kwargs['pk'])
 
 
-class ReviewListView(ListAPIView, LoginRequiredMixin):
+class ReviewListView(ListAPIView):
     serializer_class = ReviewSerializer
 
     def get_queryset(self):
         return Review.objects.all()
 
 
-class RequestCreateView(CreateAPIView, LoginRequiredMixin):
+class RequestCreateView(CreateAPIView):
     serializer_class = RequestSerializer
