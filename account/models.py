@@ -17,7 +17,8 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile', verbose_name='пользователь')
     date_of_birth = models.DateField(verbose_name='дата рождения')
     phone_number = models.CharField(max_length=13, verbose_name='номер телефона')
-    avatar = models.ImageField(upload_to='profiles', blank=True, null=True, verbose_name='фотка')
+    avatar = models.ImageField(upload_to='profiles', blank=True, null=True, verbose_name='фотка',
+                               default='profiles/img.png')
     gender = models.CharField(max_length=32, choices=Genders.choices, blank=True, null=True, verbose_name='пол')
     role = models.CharField(max_length=32, choices=Role.choices, verbose_name='роль')
 
